@@ -29,9 +29,7 @@ export default function PageLayout({ children, title, subtitle }) {
 
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', padding: '4px 8px' }}>
-        <div style={{ width: '40px', height: '40px', background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', boxShadow: '0 4px 16px rgba(79,70,229,0.5)', flexShrink: 0 }}>
-          🗓️
-        </div>
+        <div style={{ width: '40px', height: '40px', background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', boxShadow: '0 4px 16px rgba(79,70,229,0.5)', flexShrink: 0 }}>🗓️</div>
         <div>
           <span style={{ color: '#fff', fontSize: '17px', fontWeight: '800' }}>Smart </span>
           <span style={{ color: '#818cf8', fontSize: '17px', fontWeight: '800' }}>Scheduler</span>
@@ -50,28 +48,16 @@ export default function PageLayout({ children, title, subtitle }) {
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981', flexShrink: 0 }} />
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }} />
           <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>Online</span>
         </div>
       </div>
 
-      {/* Nav items */}
+      {/* Nav */}
       {navItems.map((item, i) => {
         const active = location.pathname === item.path
         return (
-          <div
-            key={i}
-            onClick={() => { navigate(item.path); setOpen(false) }}
-            style={{
-              display: 'flex', alignItems: 'center', gap: '12px',
-              padding: '11px 14px', borderRadius: '12px',
-              color: active ? '#a5b4fc' : '#64748b',
-              fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s',
-              background: active ? 'rgba(79,70,229,0.2)' : 'transparent',
-              borderLeft: active ? '3px solid #4f46e5' : '3px solid transparent',
-              fontWeight: active ? '700' : '400', marginBottom: '2px',
-            }}
-          >
+          <div key={i} onClick={() => { navigate(item.path); setOpen(false) }} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '11px 14px', borderRadius: '12px', color: active ? '#a5b4fc' : '#64748b', fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s', background: active ? 'rgba(79,70,229,0.2)' : 'transparent', borderLeft: active ? '3px solid #4f46e5' : '3px solid transparent', fontWeight: active ? '700' : '400', marginBottom: '2px' }}>
             <span style={{ fontSize: '16px', width: '20px', textAlign: 'center' }}>{item.icon}</span>
             <span>{item.label}</span>
             {active && <span style={{ marginLeft: 'auto', width: '6px', height: '6px', borderRadius: '50%', background: '#4f46e5' }} />}
@@ -81,11 +67,7 @@ export default function PageLayout({ children, title, subtitle }) {
 
       <div style={{ flex: 1 }} />
 
-      {/* Logout */}
-      <div
-        onClick={logout}
-        style={{ padding: '11px 14px', borderRadius: '12px', color: '#f87171', background: 'rgba(239,68,68,0.08)', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid rgba(239,68,68,0.12)', transition: 'all 0.2s', marginTop: '8px' }}
-      >
+      <div onClick={logout} style={{ padding: '11px 14px', borderRadius: '12px', color: '#f87171', background: 'rgba(239,68,68,0.08)', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid rgba(239,68,68,0.12)', marginTop: '8px' }}>
         🚪 <span>Logout</span>
       </div>
     </div>
@@ -94,7 +76,7 @@ export default function PageLayout({ children, title, subtitle }) {
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: 'linear-gradient(135deg,#07060f 0%,#0d0b1a 30%,#0a0f1e 60%,#0d0a18 100%)', position: 'relative', overflow: 'hidden' }}>
 
-      {/* Background blobs */}
+      {/* Blobs */}
       <div style={{ position: 'fixed', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(79,70,229,0.07),transparent 70%)', top: '-150px', left: '-100px', pointerEvents: 'none', zIndex: 0, animation: 'blobFloat1 18s ease-in-out infinite' }} />
       <div style={{ position: 'fixed', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(124,58,237,0.06),transparent 70%)', bottom: '-100px', right: '-80px', pointerEvents: 'none', zIndex: 0, animation: 'blobFloat2 22s ease-in-out infinite' }} />
       <div style={{ position: 'fixed', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(16,185,129,0.04),transparent 70%)', top: '40%', right: '20%', pointerEvents: 'none', zIndex: 0, animation: 'blobFloat3 26s ease-in-out infinite' }} />
@@ -107,48 +89,46 @@ export default function PageLayout({ children, title, subtitle }) {
         @keyframes blobFloat4 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-15px,-20px) scale(1.02);} }
         @keyframes pageSlideIn { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
         @keyframes slideInLeft { from{transform:translateX(-100%);} to{transform:translateX(0);} }
-        .nav-link:hover { background:rgba(79,70,229,0.1) !important; color:#c7d2fe !important; transform:translateX(4px); }
-        .logout-hover:hover { background:rgba(239,68,68,0.15) !important; }
         @media(max-width:900px){
-          .desk-side { display:none !important; }
-          .mob-bar   { display:flex !important; }
-          .pg-main   { margin-left:0 !important; padding:16px !important; }
+          .pl-desk { display:none !important; }
+          .pl-mob  { display:flex !important; }
+          .pl-main { margin-left:0 !important; padding:16px !important; }
         }
       `}</style>
 
       {/* Desktop Sidebar */}
-      <aside className="desk-side" style={{ width: '268px', minHeight: '100vh', background: 'rgba(10,9,20,0.97)', backdropFilter: 'blur(20px)', padding: '24px 16px', position: 'fixed', left: 0, top: 0, borderRight: '1px solid rgba(255,255,255,0.05)', zIndex: 100, overflowY: 'auto', boxShadow: '4px 0 32px rgba(0,0,0,0.4)' }}>
+      <aside className="pl-desk" style={{ width: '268px', minHeight: '100vh', background: 'rgba(10,9,20,0.97)', backdropFilter: 'blur(20px)', padding: '24px 16px', position: 'fixed', left: 0, top: 0, borderRight: '1px solid rgba(255,255,255,0.05)', zIndex: 100, overflowY: 'auto', boxShadow: '4px 0 32px rgba(0,0,0,0.4)' }}>
         <SidebarContent />
       </aside>
 
-      {/* Mobile overlay */}
+      {/* Mobile Overlay */}
       {open && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', zIndex: 200, backdropFilter: 'blur(4px)', display: 'flex' }} onClick={() => setOpen(false)}>
-          <aside style={{ width: '285px', background: 'rgba(10,9,20,0.98)', padding: '24px 16px', overflowY: 'auto', animation: 'slideInLeft 0.25s ease', boxShadow: '8px 0 40px rgba(0,0,0,0.5)' }} onClick={e => e.stopPropagation()}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', zIndex: 200, backdropFilter: 'blur(4px)', display: 'flex' }} onClick={() => setOpen(false)}>
+          <aside style={{ width: '280px', maxWidth: '85vw', background: 'rgba(10,9,20,0.99)', padding: '24px 16px', overflowY: 'auto', animation: 'slideInLeft 0.25s ease', boxShadow: '8px 0 40px rgba(0,0,0,0.5)' }} onClick={e => e.stopPropagation()}>
             <SidebarContent />
           </aside>
         </div>
       )}
 
       {/* Main */}
-      <main className="pg-main" style={{ marginLeft: '268px', padding: '28px', flex: 1, minHeight: '100vh', position: 'relative', zIndex: 1 }}>
+      <main className="pl-main" style={{ marginLeft: '268px', padding: '28px', flex: 1, minHeight: '100vh', position: 'relative', zIndex: 1 }}>
 
-        {/* Mobile bar */}
-        <div className="mob-bar" style={{ display: 'none', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', padding: '12px 16px', border: '1px solid rgba(255,255,255,0.06)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
-          <button onClick={() => setOpen(true)} style={{ background: 'rgba(79,70,229,0.15)', border: '1px solid rgba(79,70,229,0.25)', color: '#818cf8', borderRadius: '10px', padding: '8px 12px', fontSize: '18px', cursor: 'pointer' }}>☰</button>
+        {/* Mobile top bar */}
+        <div className="pl-mob" style={{ display: 'none', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', padding: '12px 16px', border: '1px solid rgba(255,255,255,0.06)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+          <button onClick={() => setOpen(true)} style={{ background: 'rgba(79,70,229,0.15)', border: '1px solid rgba(79,70,229,0.25)', color: '#818cf8', borderRadius: '10px', padding: '8px 14px', fontSize: '18px', cursor: 'pointer', lineHeight: 1 }}>☰</button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '18px' }}>🗓️</span>
             <span style={{ color: '#fff', fontSize: '15px', fontWeight: '800' }}>Smart <span style={{ color: '#818cf8' }}>Scheduler</span></span>
           </div>
-          <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '12px' }}>
+          <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '13px' }}>
             {getInitials(user?.name)}
           </div>
         </div>
 
-        {/* Page header */}
+        {/* Page title */}
         {title && (
-          <div style={{ marginBottom: '24px', animation: 'pageSlideIn 0.5s ease' }}>
-            <h1 style={{ fontSize: '24px', fontWeight: '800', color: '#fff', margin: 0, letterSpacing: '-0.5px' }}>{title}</h1>
+          <div style={{ marginBottom: '20px', animation: 'pageSlideIn 0.5s ease' }}>
+            <h1 style={{ fontSize: '22px', fontWeight: '800', color: '#fff', margin: 0 }}>{title}</h1>
             {subtitle && <p style={{ color: '#64748b', fontSize: '13px', marginTop: '4px' }}>{subtitle}</p>}
           </div>
         )}
